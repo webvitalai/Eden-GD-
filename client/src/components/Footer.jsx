@@ -1,5 +1,5 @@
 import React from "react";
-import { Leaf, Phone, MessageCircle, Mail, MapPin } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -12,6 +12,11 @@ const Footer = () => {
           color: #fff;
           padding: 80px 20px 0;
           font-family: Inter, sans-serif;
+          overflow: hidden;
+        }
+
+        .footer * {
+          box-sizing: border-box;
         }
 
         .footer-container {
@@ -28,25 +33,57 @@ const Footer = () => {
         .footer-logo {
           display: flex;
           align-items: center;
-          gap: 14px;
+          gap: 7px;
           margin-bottom: 24px;
+          max-width: 100%;
         }
 
-        .footer-icon {
-          width: 54px;
-          height: 54px;
-          border-radius: 18px;
-          background: linear-gradient(135deg, #5d9c42, #8bc34a);
+        .footer-logo-box {
+          width: 86px;
+          height: 74px;
+          min-width: 86px;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 14px 30px rgba(139,195,74,.25);
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          overflow: visible;
+          flex-shrink: 0;
+        }
+
+        .footer-logo-img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          filter:
+            brightness(1.08)
+            contrast(1.16)
+            saturate(1.12)
+            drop-shadow(0 5px 10px rgba(0,0,0,.35));
+          transition: .35s ease;
+        }
+
+        .footer-logo:hover .footer-logo-img {
+          transform: scale(1.06);
+        }
+
+        .footer-brand-text {
+          min-width: 0;
+          margin-left: -3px;
         }
 
         .footer-title {
           font-size: 24px;
           font-weight: 900;
           line-height: 1;
+          color: #ffffff;
+          white-space: nowrap;
         }
 
         .footer-subtitle {
@@ -55,6 +92,7 @@ const Footer = () => {
           color: #b8e986;
           font-size: 14px;
           font-weight: 700;
+          white-space: nowrap;
         }
 
         .footer-quote {
@@ -62,6 +100,7 @@ const Footer = () => {
           font-weight: 900;
           margin-bottom: 14px;
           color: #b8e986;
+          line-height: 1.25;
         }
 
         .footer-desc {
@@ -73,6 +112,7 @@ const Footer = () => {
 
         .footer-badge {
           display: inline-flex;
+          align-items: center;
           padding: 12px 18px;
           border-radius: 999px;
           background: rgba(139,195,74,.12);
@@ -80,12 +120,14 @@ const Footer = () => {
           color: #b8e986;
           font-weight: 800;
           font-size: 14px;
+          line-height: 1.3;
         }
 
         .footer-heading {
           font-size: 22px;
           font-weight: 900;
           margin-bottom: 24px;
+          color: #ffffff;
         }
 
         .footer-links,
@@ -105,12 +147,22 @@ const Footer = () => {
           align-items: center;
           gap: 10px;
           transition: .3s;
+          line-height: 1.5;
         }
 
-        .footer-links a:hover,
-        .footer-contact a:hover {
+        .footer-contact p {
+          align-items: flex-start;
+        }
+
+        .footer-contact a:hover,
+        .footer-links a:hover {
           color: #8bc34a;
           transform: translateX(5px);
+        }
+
+        .footer-contact svg {
+          flex-shrink: 0;
+          margin-top: 2px;
         }
 
         .footer-hours {
@@ -124,6 +176,11 @@ const Footer = () => {
         .footer-hours p {
           font-size: 14px;
           margin-bottom: 8px;
+          display: block;
+        }
+
+        .footer-hours p:last-child {
+          margin-bottom: 0;
         }
 
         .footer-bottom {
@@ -142,9 +199,15 @@ const Footer = () => {
           font-size: 14px;
         }
 
+        .footer-bottom-inner p {
+          margin: 0;
+        }
+
         .footer-policy {
           display: flex;
+          align-items: center;
           gap: 18px;
+          flex-wrap: wrap;
         }
 
         .footer-policy a {
@@ -156,14 +219,132 @@ const Footer = () => {
           color: #8bc34a;
         }
 
+        @media(max-width: 1100px) {
+          .footer-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 42px;
+          }
+
+          .footer-grid > div:first-child {
+            grid-column: 1 / -1;
+          }
+
+          .footer-desc {
+            max-width: 620px;
+          }
+        }
+
         @media(max-width: 900px) {
+          .footer {
+            padding: 70px 20px 0;
+          }
+
           .footer-grid {
             grid-template-columns: 1fr;
+            gap: 42px;
           }
 
           .footer-bottom-inner {
             flex-direction: column;
             text-align: center;
+            justify-content: center;
+          }
+
+          .footer-policy {
+            justify-content: center;
+          }
+
+          .footer-logo-box {
+            width: 78px;
+            height: 68px;
+            min-width: 78px;
+          }
+
+          .footer-title {
+            font-size: 23px;
+          }
+        }
+
+        @media(max-width: 576px) {
+          .footer {
+            padding: 60px 16px 0;
+          }
+
+          .footer-logo {
+            gap: 5px;
+            align-items: center;
+          }
+
+          .footer-logo-box {
+            width: 66px;
+            height: 58px;
+            min-width: 66px;
+          }
+
+          .footer-brand-text {
+            margin-left: -2px;
+            min-width: 0;
+          }
+
+          .footer-title {
+            font-size: 20px;
+            white-space: normal;
+            line-height: 1.08;
+          }
+
+          .footer-subtitle {
+            font-size: 12px;
+          }
+
+          .footer-quote {
+            font-size: 21px;
+          }
+
+          .footer-desc {
+            font-size: 14px;
+          }
+
+          .footer-heading {
+            font-size: 20px;
+          }
+
+          .footer-badge {
+            font-size: 13px;
+            padding: 11px 15px;
+          }
+
+          .footer-contact a,
+          .footer-contact p,
+          .footer-links a {
+            font-size: 14px;
+          }
+
+          .footer-bottom {
+            margin-top: 50px;
+          }
+        }
+
+        @media(max-width: 390px) {
+          .footer-logo-box {
+            width: 58px;
+            height: 52px;
+            min-width: 58px;
+          }
+
+          .footer-title {
+            font-size: 18px;
+          }
+
+          .footer-subtitle {
+            font-size: 11px;
+          }
+
+          .footer-quote {
+            font-size: 19px;
+          }
+
+          .footer-bottom-inner {
+            font-size: 13px;
           }
         }
       `}</style>
@@ -173,10 +354,15 @@ const Footer = () => {
           <div className="footer-grid">
             <div>
               <div className="footer-logo">
-                <div className="footer-icon">
-                  <Leaf size={28} />
+                <div className="footer-logo-box">
+                  <img
+                    src="/Images/Logo.png"
+                    alt="Eden Gardening & Landscaping Logo"
+                    className="footer-logo-img"
+                  />
                 </div>
-                <div>
+
+                <div className="footer-brand-text">
                   <div className="footer-title">Eden Gardening</div>
                   <span className="footer-subtitle">& Landscaping</span>
                 </div>
@@ -211,15 +397,15 @@ const Footer = () => {
               <h4 className="footer-heading">Get In Touch</h4>
 
               <div className="footer-contact">
-                <a href="tel:07900799126">
+                <a href="tel:07872697251">
                   <Phone size={17} /> 07872 697 251
                 </a>
 
-                <a href="https://wa.me/07872697251">
+                <a href="https://wa.me/447872697251">
                   <MessageCircle size={17} /> WhatsApp Us
                 </a>
 
-                <a href="mailto:hello@allen.co.uk">
+                <a href="mailto:hello@eden.co.uk">
                   <Mail size={17} /> hello@eden.co.uk
                 </a>
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Leaf, Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X } from "lucide-react";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -26,7 +26,7 @@ const Header = () => {
           left: 0;
           width: 100%;
           z-index: 999;
-          padding: 14px 20px;
+          padding: 12px 20px;
           background: linear-gradient(135deg, #f4fff6 0%, #e7f7df 45%, #fff8e7 100%);
           border-bottom: 1px solid rgba(37, 95, 56, 0.15);
           box-shadow: 0 12px 35px rgba(32, 71, 44, 0.12);
@@ -47,20 +47,49 @@ const Header = () => {
         .garden-brand {
           display: flex;
           align-items: center;
-          gap: 13px;
+          gap: 7px;
           text-decoration: none;
+          min-width: 0;
+          flex-shrink: 0;
         }
 
         .garden-logo {
-          width: 48px;
-          height: 48px;
-          border-radius: 16px;
+          width: 82px;
+          height: 70px;
+          min-width: 82px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #fff;
-          background: linear-gradient(135deg, #1f7a3f, #9bc53d);
-          box-shadow: 0 10px 25px rgba(31, 122, 63, 0.35);
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          overflow: visible;
+        }
+
+        .garden-logo-img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          filter:
+            brightness(1.08)
+            contrast(1.16)
+            saturate(1.12)
+            drop-shadow(0 4px 8px rgba(31, 122, 63, 0.22));
+          transition: 0.35s ease;
+        }
+
+        .garden-brand:hover .garden-logo-img {
+          transform: scale(1.06);
+        }
+
+        .garden-brand-text {
+          min-width: 0;
+          margin-left: -3px;
         }
 
         .garden-title {
@@ -69,6 +98,7 @@ const Header = () => {
           color: #12351f;
           line-height: 1;
           letter-spacing: -0.4px;
+          white-space: nowrap;
         }
 
         .garden-subtitle {
@@ -76,6 +106,7 @@ const Header = () => {
           font-size: 13px;
           font-weight: 600;
           color: #8a6d1f;
+          white-space: nowrap;
         }
 
         .garden-nav {
@@ -87,6 +118,7 @@ const Header = () => {
           background: rgba(255, 255, 255, 0.72);
           border: 1px solid rgba(31, 122, 63, 0.12);
           backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
         }
 
         .garden-nav a {
@@ -97,6 +129,7 @@ const Header = () => {
           padding: 10px 15px;
           border-radius: 999px;
           transition: 0.3s ease;
+          white-space: nowrap;
         }
 
         .garden-nav a:hover,
@@ -110,6 +143,7 @@ const Header = () => {
           display: flex;
           align-items: center;
           gap: 12px;
+          flex-shrink: 0;
         }
 
         .garden-phone {
@@ -132,6 +166,10 @@ const Header = () => {
           background: linear-gradient(135deg, #173b22, #2f8f46);
           box-shadow: 0 12px 24px rgba(23, 59, 34, 0.28);
           transition: 0.3s ease;
+          white-space: nowrap;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .garden-quote:hover {
@@ -144,6 +182,7 @@ const Header = () => {
           border: none;
           width: 46px;
           height: 46px;
+          min-width: 46px;
           border-radius: 14px;
           color: #fff;
           background: #173b22;
@@ -179,6 +218,7 @@ const Header = () => {
 
         .garden-mobile .garden-phone {
           display: flex;
+          align-items: center;
           margin-top: 8px;
           background: #fff8e7;
           color: #173b22;
@@ -189,6 +229,28 @@ const Header = () => {
           margin-top: 12px;
           color: #fff;
           background: linear-gradient(135deg, #173b22, #2f8f46);
+        }
+
+        @media (max-width: 1200px) {
+          .garden-nav {
+            gap: 5px;
+            padding: 7px;
+          }
+
+          .garden-nav a {
+            font-size: 13px;
+            padding: 9px 12px;
+          }
+
+          .garden-logo {
+            width: 76px;
+            height: 66px;
+            min-width: 76px;
+          }
+
+          .garden-title {
+            font-size: 19px;
+          }
         }
 
         @media (max-width: 1100px) {
@@ -206,23 +268,100 @@ const Header = () => {
           }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
           .garden-header {
-            padding: 12px 14px;
+            padding: 11px 16px;
+          }
+
+          .garden-brand {
+            gap: 5px;
           }
 
           .garden-logo {
-            width: 43px;
-            height: 43px;
-            border-radius: 14px;
+            width: 70px;
+            height: 60px;
+            min-width: 70px;
           }
 
           .garden-title {
-            font-size: 17px;
+            font-size: 18px;
           }
 
           .garden-subtitle {
             font-size: 12px;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .garden-header {
+            padding: 10px 14px;
+          }
+
+          .garden-inner {
+            gap: 10px;
+          }
+
+          .garden-brand {
+            max-width: calc(100% - 56px);
+          }
+
+          .garden-logo {
+            width: 62px;
+            height: 54px;
+            min-width: 62px;
+          }
+
+          .garden-brand-text {
+            margin-left: -2px;
+            min-width: 0;
+          }
+
+          .garden-title {
+            font-size: 17px;
+            white-space: normal;
+            line-height: 1.05;
+          }
+
+          .garden-subtitle {
+            font-size: 11.5px;
+          }
+
+          .garden-toggle {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+          }
+        }
+
+        @media (max-width: 390px) {
+          .garden-logo {
+            width: 56px;
+            height: 50px;
+            min-width: 56px;
+          }
+
+          .garden-title {
+            font-size: 15.5px;
+          }
+
+          .garden-subtitle {
+            font-size: 10.5px;
+          }
+        }
+
+        @media (max-width: 340px) {
+          .garden-logo {
+            width: 50px;
+            height: 46px;
+            min-width: 50px;
+          }
+
+          .garden-title {
+            font-size: 14px;
+          }
+
+          .garden-subtitle {
+            font-size: 10px;
           }
         }
       `}</style>
@@ -232,9 +371,14 @@ const Header = () => {
           <div className="garden-inner">
             <a className="garden-brand" href="/">
               <div className="garden-logo">
-                <Leaf size={24} />
+                <img
+                  src="/Images/Logo.png"
+                  alt="Eden Gardening & Landscaping Logo"
+                  className="garden-logo-img"
+                />
               </div>
-              <div>
+
+              <div className="garden-brand-text">
                 <div className="garden-title">Eden Gardening</div>
                 <div className="garden-subtitle">& Landscaping</div>
               </div>
@@ -253,16 +397,22 @@ const Header = () => {
             </nav>
 
             <div className="garden-actions">
-              <a href="tel:07900799126" className="garden-phone">
+              <a href="tel:07872697251" className="garden-phone">
                 <Phone size={16} />
                 <span>07872 697 251</span>
               </a>
+
               <a href="/contact" className="garden-quote">
                 Get Quote
               </a>
             </div>
 
-            <button className="garden-toggle" onClick={() => setOpen(!open)}>
+            <button
+              className="garden-toggle"
+              onClick={() => setOpen(!open)}
+              aria-label="Toggle menu"
+              type="button"
+            >
               {open ? <X size={23} /> : <Menu size={23} />}
             </button>
           </div>
